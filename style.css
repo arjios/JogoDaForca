@@ -1,46 +1,119 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 * {
     box-sizing: border-box;
     margin: 0px;
+    font-family: 'Inter';
     background-color: #E5E5E5;
 }
 
 .logo {
     margin-left: 16px;
     margin-top: 24px;
+    width: 31px;
+    height: 48px;
 }
 
 .main {
-    width: 90%;
+    width: 100%;
     float: left;
 }
 
-.main-buttons {
-    font-family: 'Inter';
-    font-style: normal;
+.main-canvas {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: #0A3871;
+    display: none;
+}
+
+.canvas {
+    width: 294px;
+    height: 360px;
+}
+
+.main-texto {
+    margin-left: 16px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: none;
+}
+
+.texto {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 150%;
+    color: #0A3871;
+}
+
+.main-word {
+    font-weight: 700;
+    font-size: 48px;
+    display: none;
+
+}
+
+.word {
+    letter-spacing: 0.5em;
+}
+
+.main-inf {
+    margin-right: 30em;
+    display: flex;
+    margin-top: 290px;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 16px;
+    display: none;
+}
+
+.inf {
+    width: 16px;
+    height: 16px;
+}
+
+.inf-text {
+    margin-left: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: #495057;
+}
+
+.main-buttons {
+    margin-top: 200px;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-left: 40px;
+    margin-left: 16px;
 }
 
 .main-buttons-first {
-    margin-top: 281px;
     width: 317px;
-    height: 100px;
+    height: 60px;
     border-radius: 24px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    margin-bottom: 10px;
-    background-color: blue;
+    margin-bottom: 15px;
+    background-color: #0A3871;
     color: #fff;
+}
+
+.main-buttons-first:hover {
+    color: #E5E5E5;
+    background-color: #0d72ec;
 }
 
 .main-buttons-second {
     width: 317px;
-    height: 100px;
+    height: 60px;
     border-radius: 24px;
     font-weight: 400;
     font-size: 16px;
@@ -48,3 +121,47 @@
     background-color: #E5E5E5;
     color: #0A3871;
 }
+
+.main-buttons-second:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.footer {
+    display: flex;
+    margin-top: 120px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 16px;
+}
+
+.footer-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: #495057;
+}
+
+  @media screen and (max-width: 766px) {
+    .main-inf {
+        margin-right: 10em;
+    }
+
+    .main-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .main-inf {
+        margin-right: 10em;
+    }
+
+    .main-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
