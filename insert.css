@@ -18,26 +18,12 @@
     float: left;
 }
 
-.main-canvas {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    background-color: #0A3871;
-    display: none;
-}
-
-.canvas {
-    width: 294px;
-    height: 360px;
-}
-
 .main-texto {
     margin-left: 16px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    display: none;
 }
 
 .texto {
@@ -48,25 +34,52 @@
     color: #0A3871;
 }
 
-.main-word {
-    font-weight: 700;
-    font-size: 48px;
-    display: none;
-
-}
-
-.word {
-    letter-spacing: 0.5em;
-}
-
-.main-inf {
-    margin-right: 30em;
+.main-form {
     display: flex;
-    margin-top: 290px;
     flex-direction: row;
     justify-content: center;
     margin-left: 16px;
-    display: none;
+    margin-top: 160px;
+}
+
+.main-linha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-linha {
+    height: 80px;
+    width: 72px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 150%;
+    color: #0A3871;
+    border: none;
+}
+
+.input-linha:focus {
+    border: none;
+}
+
+.linha {
+    padding-right: 10px;
+    color: #0A3871;
+}
+
+.main-linha:hover {
+    color: red;
+}
+
+.main-inf {
+    margin-top: 70px;
+    margin-right: 30em;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .inf {
@@ -84,7 +97,6 @@
 }
 
 .main-buttons {
-    margin-top: 378px;
     font-style: normal;
     display: flex;
     flex-direction: row;
@@ -129,12 +141,12 @@
 
 .footer {
     display: flex;
+    width: 100%;
     margin-top: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
     background-color: burlywood;
 }
 

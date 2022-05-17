@@ -14,4 +14,5 @@ evento1.addEventListener('click', function() {
 let evento2 = document.querySelector('.main-buttons-second');
 evento2.addEventListener('click', function() {
   buttonInsertWord();
+  location.href = "insert.html"
 });
