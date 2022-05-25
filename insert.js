@@ -4,20 +4,42 @@ var count = 0;
 var inputs = ["input0", "input1", "input2", "input3", "input4", "input5", "input6", "input7"];
 
 function  buttonStartGame() {
-    console.log("Start Game...");
+  str = str.trim();
+  console.log("Start Game..." + str + " " + str.length);
 } 
 
 function buttonInsertWord() {
     console.log("Insert Word...");
 }
 
-function insertWord(chr) {
-
+function insertWord(key) {
+  var t = String.fromCharCode(key).toUpperCase();
   var i = document.getElementById(`${inputs[count]}`);
-    if(chr >= "A" && chr <= "Z") {
+  if(key == 13) {
+    buttonStartGame();
+  }
+  if(key == 8) {
+    if(count <= 0) {
+      count = 0;
+      i = document.getElementById(`${inputs[count]}`);
+      i.focus();
+      i.value = "";
+      str = "";
+    } else {
+      i = document.getElementById(`${inputs[count]}`);
+      i.focus();
+      i.value = "";
+      count--;
+      str = str.slice(0, count);
+      i = document.getElementById(`${inputs[count]}`);
+      i.value = "";
+      i.focus();
+    }
+  }
+    if(t >= "A" && t <= "Z") {
       i.autofocus=false;
-      i.value = chr;
-      str += chr;
+      i.value = t;
+      str += t;
       count++;
       if(count<8) {
         i = document.getElementById(`${inputs[count]}`);
@@ -40,10 +62,9 @@ evento2.addEventListener('click', function() {
 });
 
 let input0 = document.querySelector('.main-form');
-input0.addEventListener('keypress', function(evt) {
+input0.addEventListener('keydown', function(evt) {
   evt.preventDefault();
   evt = evt || window.event;
   var key = evt.keyCode || evt.which;
-  var t = String.fromCharCode(key).toUpperCase();
-  insertWord(t);
+  insertWord(key);
 });
