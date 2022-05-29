@@ -53,12 +53,13 @@ function insertWord(key) {
 let evento1 = document.querySelector(".main-buttons-first");
 evento1.addEventListener('click', function() {
   buttonStartGame();
+  location.href = "forca.html";
 });
 
 let evento2 = document.querySelector('.main-buttons-second');
 evento2.addEventListener('click', function() {
   buttonInsertWord();
-  location.href = "index.html"
+  location.href = "index.html";
 });
 
 let input0 = document.querySelector('.main-form');

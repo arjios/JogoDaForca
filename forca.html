@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="forca.css">
+    <title>Jogo da Forca - Alura Challenge Oracle Next One</title>
+</head>
+<body>
+    <main>
+        <section class="main">
+
+            <img class="logo" src="logo.png" alt="Logo">
+
+            <div class="main-canvas">
+                <canvas class="canvas-forca" id="canvas-id">
+                    Canvas
+                </canvas>
+            </div>
+
+            <form class="main-form">
+                <div class="main-linha" name='linha' tabindex="1">
+                    <input type="text" id="input0" name="in0" class="input-linha"  autofocus="true"  maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line0" alt="Linha0" />
+                </div>
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input1" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line1" alt="Linha1" />
+                </div> 
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input2" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line2" alt="Linha2" />
+                </div> 
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input3" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line3" alt="Linha3" />
+                </div> 
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input4" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line4" alt="Linha4" />
+                </div> 
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input5" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line5" alt="Linha5" />
+                </div> 
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input6" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line6" alt="Linha6" />
+                </div>
+                <div class="main-linha" tabindex="1">
+                    <input type="text" id="input7" class="input-linha" autofocus="false" maxlength="1" size="1" >
+                    <img src="linha.png" class="linha" id="line6" alt="Linha7" />
+                </div>       
+            </form>
+
+            <div class="letras-digitadas">
+                <h1>T E X T O</h1>
+            </div>    
+
+            <div class="main-buttons">
+                <button class="main-buttons-first">Novo Jogo</button>
+                <button class="main-buttons-second">Desistir</button> 
+            </div>
+
+            <footer class="footer">
+                <p class="footer-text">
+                    Site desenvolvido por: Antonio Alves do Rosario Junior - Alura Oracle Next Education - FT2
+                </p>
+            </footer>
+
+        </section>
+    </main>
+    <script src="forca.js"></script>
+</body>
+</html>
