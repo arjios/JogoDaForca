@@ -5,6 +5,8 @@ var inputs = ["input0", "input1", "input2", "input3", "input4", "input5", "input
 
 function  buttonStartGame() {
   str = str.trim();
+  sessionStorage.setItem("1", str);
+
   console.log("Start Game..." + str + " " + str.length);
 } 
 

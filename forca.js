@@ -11,11 +11,13 @@ let count = 0;
 
 
 function escolherPalavraSecreta() {
+  palavras.push(sessionStorage.getItem("1"));
   palavraSecreta = palavras[Math.floor(Math.random()*palavras.length)];
   if(palavraSecreta.length < 8) {
-    console.log(palavraSecreta.length);
     inserirElemento(palavraSecreta.length);
     return palavraSecreta;
+  } else {
+    desenhaMensagem("Palavras sorteadas devem conter ate 8 caracteres", 10, 20);
   }
 }
 
@@ -94,7 +96,6 @@ function inserirLetraValida(letra) {
     if(verificarVitoria()) {
       finaliza();
     }
-    console.log("Letra valida inserida: " + letra);
   }
 }
 
@@ -106,27 +107,25 @@ function verificarVitoria() {
     }
   }
   if(boo) {
-    desenhaMensagem("Voce ganhou!!", 220, 20);
+    desenhaMensagem("Você Venceu. Parabéns!", 170, 10);
   }
   return boo;
 }
 
-function inserirLetraInvalida(letra) {
+function inserirLetraInvalida() {
   erros++;
   desenhaForca(erros);
-  verificarDerrota("Voce perdeu!");
-  console.log("Letra invalida inserida: " + letra + " Erros: " + erros);
+  verificarDerrota();
 }
 
-function verificarDerrota(msg) {
-  if(erros > 8) {
-    desenhaMensagem(msg, 220, 20);
-    finaliza();
+function verificarDerrota() {
+  if(erros > 7) {
+    desenhaMensagem("Fim de Jogo", 220, 10);
   }
 }
 
 function desenhaMensagem(msg, x, y) {
-  ctx.fillFont='10px Inter';
+  ctx.font='10px Inter';
   ctx.fillStyle='green';
   ctx.fillText(msg, x, y);
   ctx.stroke();
