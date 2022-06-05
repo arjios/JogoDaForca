@@ -1,4 +1,6 @@
 // globais
+let c = document.getElementById("canvas-id");
+let ctx = c.getContext("2d");
 let letrasDigitadas = "";
 let palavras = ["ALURA", "ORACLE", "HTML", "JAVASCRIPT", "CSS"];
 let inputs = ["input0", "input1", "input2", "input3", "input4", "input5", "input6", "input7"];
@@ -10,50 +12,55 @@ let count = 0;
 
 function escolherPalavraSecreta() {
   palavraSecreta = palavras[Math.floor(Math.random()*palavras.length)];
-  console.log(palavraSecreta);
-  inserirElemento(palavraSecreta.length);
-  return palavraSecreta;
+  if(palavraSecreta.length < 8) {
+    console.log(palavraSecreta.length);
+    inserirElemento(palavraSecreta.length);
+    return palavraSecreta;
+  }
 }
 
 function inserirElemento(index) {
-  const target = document.querySelector('.main-form');
-  for(let i = 1 ; i < index ; i++) {
-
-    const div = document.createElement('div');
-      div.className = 'main-linha';
-      div.id = 'm-linha' + i;
-      div.tabIndex = '1';
-      target.appendChild(div);
-    
-    const targetDiv = document.querySelector('#m-linha' + i);
-
-    const input = document.createElement('input');
-      input.type = "text";
-      input.id = "input" + i;
-      input.className = "input-linha";
-      input.autofocus = "false";
-      input.maxLength = "1";
-      input.size = "1";
-      input.disabled = "true";
-
-    const img = document.createElement('img');
-      img.src = 'linha.png';
-      img.className = 'linha';
-      img.id = 'line' + i;
-      img.alt = 'Linha' + i;
-
-    targetDiv.appendChild(input);
-    targetDiv.appendChild(img);
+  if(palavraSecreta.length < 8) {
+    const target = document.querySelector('.main-form');
+    for(let i = 1 ; i < index ; i++) {
+      const div = document.createElement('div');
+        div.className = 'main-linha';
+        div.id = 'm-linha' + i;
+        div.tabIndex = '1';
+        target.appendChild(div);
+  
+      const targetDiv = document.querySelector('#m-linha' + i);
+  
+      const input = document.createElement('input');
+        input.type = "text";
+        input.id = "input" + i;
+        input.className = "input-linha";
+        input.autofocus = "false";
+        input.maxLength = "1";
+        input.size = "1";
+        input.disabled = "true";
+  
+      const img = document.createElement('img');
+        img.src = 'linha.png';
+        img.className = 'linha';
+        img.id = 'line' + i;
+        img.alt = 'Linha' + i;
+  
+      targetDiv.appendChild(input);
+      targetDiv.appendChild(img);
+    }
   }
 }
 
 function inserirLetra(key) {
   let t = String.fromCharCode(key).toUpperCase();
-  if(t >= "A" && t <= "Z") {
-    if(!verificarLetraRepetida(t)) {
-      console.log(t + "   " + letrasDigitadas);
-      compararLetras(t);
-    } 
+  if(erros < 8) {
+    if(t >= "A" && t <= "Z") {
+      if(!verificarLetraRepetida(t)) {
+        console.log(t + "   " + letrasDigitadas);
+        compararLetras(t);
+      } 
+    }
   }
 }
 
@@ -78,15 +85,17 @@ function compararLetras(caractere) {
 }
 
 function inserirLetraValida(letra) {
-  for(let i=0; i<palavraSecreta.length; i++) {
-    if(palavraSecreta[i] === letra) {
-      document.getElementById(`${inputs[i]}`).value = letra;
+  if(erros < 8) {
+    for(let i=0; i<palavraSecreta.length; i++) {
+      if(palavraSecreta[i] === letra) {
+        document.getElementById(`${inputs[i]}`).value = letra;
+      }
     }
+    if(verificarVitoria()) {
+      finaliza();
+    }
+    console.log("Letra valida inserida: " + letra);
   }
-  if(verificarVitoria()) {
-    finaliza();
-  }
-  console.log("Letra valida inserida: " + letra);
 }
 
 function verificarVitoria() {
@@ -97,7 +106,7 @@ function verificarVitoria() {
     }
   }
   if(boo) {
-    alert("Voce Ganhou");
+    desenhaMensagem("Voce ganhou!!", 220, 20);
   }
   return boo;
 }
@@ -105,17 +114,35 @@ function verificarVitoria() {
 function inserirLetraInvalida(letra) {
   erros++;
   desenhaForca(erros);
-  verificarDerrota();
+  verificarDerrota("Voce perdeu!");
   console.log("Letra invalida inserida: " + letra + " Erros: " + erros);
 }
 
-function verificarDerrota() {
-  alert("VocePerdeu");
+function verificarDerrota(msg) {
+  if(erros > 8) {
+    desenhaMensagem(msg, 220, 20);
+    finaliza();
+  }
+}
+
+function desenhaMensagem(msg, x, y) {
+  ctx.fillFont='10px Inter';
+  ctx.fillStyle='green';
+  ctx.fillText(msg, x, y);
+  ctx.stroke();
+}
+
+
+function  buttonStartGame() {
+  location.href = "forca.html";
+} 
+
+function buttonInsertWord() {
+  location.href = "index.html"
 }
 
 function desenhaForca(err) {
-  var c = document.getElementById("canvas-id");
-  var ctx = c.getContext("2d");
+
   //base
   ctx.moveTo(20,140);
   ctx.lineTo(275,140);
@@ -170,14 +197,6 @@ function finaliza() {
   console.log("FIM");
 }
 
-function  buttonStartGame() {
-  location.href = "forca.html";
-} 
-
-function buttonInsertWord() {
-  location.href = "index.html"
-}
-
 let evento1 = document.querySelector(".main-buttons-first");
 evento1.addEventListener('click', function() {
   buttonStartGame();
@@ -191,9 +210,11 @@ evento2.addEventListener('click', function() {
 let input0 = document.querySelector('.input-linha');
 input0.addEventListener('keydown', function(evt) {
   evt.preventDefault();
-  evt = evt || window.event;
-  var key = evt.keyCode || evt.which;
-  inserirLetra(key);
+  if(palavraSecreta.length < 8) {
+    evt = evt || window.event;
+    var key = evt.keyCode || evt.which;
+    inserirLetra(key);
+  }
 });
 
 desenhaForca(0);
